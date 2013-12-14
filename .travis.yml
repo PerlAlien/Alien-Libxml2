@@ -8,7 +8,6 @@ install:
   - cpanm -n Test::CPAN::Changes Test::EOL Test::Fixme Test::NoTabs Test::Pod::Spelling::CommonMistakes Test::Spelling Test::Strict Test::Version || true
 
 perl:
-  - "5.8"
   - "5.10"
   - "5.12"
   - "5.14"
