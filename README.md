@@ -31,16 +31,12 @@ Makefile.PL
       LIBS   => Alien::Libxml2->libs,
     );
 
-FFI
-
-    use Alien::Libxml2;
-    use FFI::Sweet qw( ffi_lib );
-    
-    ffi_lib(Alien::Libml2->new->libs);
-
 # DESCRIPTION
 
-This module provides libxml2 for other modules to use.
+This module provides libxml2 for other modules to use.  There was an 
+already existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it uses the older 
+[Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not bee actively maintained for a 
+while.
 
 # AUTHOR
 

@@ -1,5 +1,0 @@
-Alien::Base
-File::ShareDir
-Test::CChecker
-Test::More
-Text::ParseWords

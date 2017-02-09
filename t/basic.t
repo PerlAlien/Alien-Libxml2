@@ -1,40 +1,44 @@
-use strict;
-use warnings;
-use Test::More tests => 1;
-use Test::CChecker;
+use Test2::Bundle::Extended;
+use Test::Alien;
 use Alien::Libxml2;
 
-compile_with_alien 'Alien::Libxml2';
+alien_ok 'Alien::Libxml2';
 
-compile_output_to_note;
+my $xs = do { local $/; <DATA> };
+xs_ok $xs, with_subtest {
+  ok(Libxml2::mytest());
+};
 
-compile_run_ok do { local $/; <DATA> }, "basic comoile test";
+done_testing;
 
 __DATA__
 
-#include <stdio.h>
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
-int
-main(int argc, char *argv[])
-{
-  xmlDoc *doc = NULL;
-  xmlNode *root_element = NULL;
-  const char *filename = "t/basic.xml";
-  
-  doc = xmlReadFile(filename, NULL, 0);
-  
-  if(doc == NULL)
-  {
-    printf("error reading %s\n", filename);
-    return 2;
-  }
-  
-  xmlFreeDoc(doc);
-  
-  xmlCleanupParser();
-  
-  return 0;
-}
+MODULE = Libxml2 PACKAGE = Libxml2
 
+int
+mytest()
+  INIT:
+    xmlDoc *doc = NULL;
+    xmlNode *root_element = NULL;
+    const char *filename = "t/basic.xml";
+  CODE:
+    doc = xmlReadFile(filename, NULL, 0);
+    if(doc == NULL)
+    {
+      printf("error reading %s\n", filename);
+      RETVAL = 0;
+    }
+    else
+    {
+      xmlFreeDoc(doc);
+      xmlCleanupParser();
+      RETVAL = 1;
+    }
+  OUTPUT:
+    RETVAL

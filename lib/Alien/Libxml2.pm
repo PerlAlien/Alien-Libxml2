@@ -2,8 +2,7 @@ package Alien::Libxml2;
 
 use strict;
 use warnings;
-use base qw( Alien::Base );
-use Text::ParseWords qw( shellwords );
+use base qw( Alien::Base2 );
 
 # ABSTRACT: Install the C libxml2 library on your system
 # VERSION
@@ -37,31 +36,13 @@ Makefile.PL
    LIBS   => Alien::Libxml2->libs,
  );
 
-FFI
-
- use Alien::Libxml2;
- use FFI::Sweet qw( ffi_lib );
- 
- ffi_lib(Alien::Libml2->new->libs);
-
 =head1 DESCRIPTION
 
-This module provides libxml2 for other modules to use.
+This module provides libxml2 for other modules to use.  There was an 
+already existing L<Alien::LibXML>, but it uses the older 
+L<Alien::Build::ModuleBuild> and has not bee actively maintained for a 
+while.
 
 =cut
-
-# workaround for Alien::Base gh#30
-sub import
-{
-  my $class = shift;
-  if($class->install_type('share'))
-  {
-    unshift @DynaLoader::dl_library_path,
-      grep { s/^-L// }
-      shellwords( $class->libs );
-  }
-  
-  $class->SUPER::import(@_);
-}
 
 1;
