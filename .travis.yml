@@ -4,8 +4,8 @@ sudo: false
 install:
   - perlbrew list
   - cpanm App::af
-  - af missing -p configure | cpanm
-  - af missing              | cpanm
+  - af missing -p configure | cpanm -n
+  - af missing              | cpanm -n
   - dzil authordeps --missing | cpanm -n
   - dzil listdeps   --missing | cpanm -n
 
