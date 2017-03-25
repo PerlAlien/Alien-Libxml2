@@ -2,7 +2,7 @@ package Alien::Libxml2;
 
 use strict;
 use warnings;
-use base qw( Alien::Base2 );
+use base qw( Alien::Base );
 
 # ABSTRACT: Install the C libxml2 library on your system
 # VERSION
@@ -28,11 +28,12 @@ Makefile.PL
 
  use Alien::Libxml2;
  use ExtUtils::MakeMaker;
+ use Config;
  
  my $alien = Alien::Libxml2->new;
  WriteMakefile(
    ...
-   CFLAGS => Alien::Libxml2->cflags,
+   CFLAGS => $Config{ccflags} . ' ' . Alien::Libxml2->cflags,
    LIBS   => Alien::Libxml2->libs,
  );
 
@@ -42,6 +43,16 @@ This module provides libxml2 for other modules to use.  There was an
 already existing L<Alien::LibXML>, but it uses the older 
 L<Alien::Build::ModuleBuild> and has not bee actively maintained for a 
 while.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Alien::LibXML>
+
+Unmaintained Alien for the same library.
+
+=back
 
 =cut
 

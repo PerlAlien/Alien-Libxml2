@@ -23,11 +23,12 @@ Makefile.PL
 
     use Alien::Libxml2;
     use ExtUtils::MakeMaker;
+    use Config;
     
     my $alien = Alien::Libxml2->new;
     WriteMakefile(
       ...
-      CFLAGS => Alien::Libxml2->cflags,
+      CFLAGS => $Config{ccflags} . ' ' . Alien::Libxml2->cflags,
       LIBS   => Alien::Libxml2->libs,
     );
 
@@ -37,6 +38,12 @@ This module provides libxml2 for other modules to use.  There was an
 already existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it uses the older 
 [Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not bee actively maintained for a 
 while.
+
+# SEE ALSO
+
+- [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML)
+
+    Unmaintained Alien for the same library.
 
 # AUTHOR
 
