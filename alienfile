@@ -1,6 +1,7 @@
 use alienfile;
 
 plugin 'PkgConfig' => 'libxml-2.0';
+plugin 'PkgConfig::MakeStatic' => ();
 
 share {
 
@@ -17,5 +18,7 @@ share {
     '%{make}',
     '%{make} install',
   ];
+  
+  plugin 'PkgConfig::MakeStatic' => ();
 
 };

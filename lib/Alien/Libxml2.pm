@@ -6,36 +6,7 @@ use base qw( Alien::Base );
 
 # ABSTRACT: Install the C libxml2 library on your system
 # VERSION
-
-=head1 SYNOPSIS
-
-Build.PL
-
- use Alien::Libxml2;
- use Module::Build;
- 
- my $alien = Alien::Libxml2;
- my $build = Module::Build->new(
-   ...
-   extra_compiler_flags => $alien->cflags,
-   extra_linker_flags   => $alien->libs,
-   ...
- );
- 
- $build->create_build_script
-
-Makefile.PL
-
- use Alien::Libxml2;
- use ExtUtils::MakeMaker;
- use Config;
- 
- my $alien = Alien::Libxml2->new;
- WriteMakefile(
-   ...
-   CFLAGS => $Config{ccflags} . ' ' . Alien::Libxml2->cflags,
-   LIBS   => Alien::Libxml2->libs,
- );
+# ALIEN SYNOPSIS
 
 =head1 DESCRIPTION
 

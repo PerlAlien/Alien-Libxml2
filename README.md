@@ -4,32 +4,46 @@ Install the C libxml2 library on your system
 
 # SYNOPSIS
 
-Build.PL
+In your Build.PL:
 
-    use Alien::Libxml2;
     use Module::Build;
-    
-    my $alien = Alien::Libxml2;
-    my $build = Module::Build->new(
+    use Alien::Libxml2;
+    my $builder = Module::Build->new(
       ...
-      extra_compiler_flags => $alien->cflags,
-      extra_linker_flags   => $alien->libs,
+      configure_requires => {
+        'Alien::Libxml2' => '0',
+        ...
+      },
+      extra_compiler_flags => Alien::Libxml2->cflags,
+      extra_linker_flags   => Alien::Libxml2->libs,
       ...
     );
     
-    $build->create_build_script
+    $build->create_build_script;
 
-Makefile.PL
+In your Makefile.PL:
 
-    use Alien::Libxml2;
     use ExtUtils::MakeMaker;
     use Config;
+    use Alien::Libxml2;
     
-    my $alien = Alien::Libxml2->new;
     WriteMakefile(
       ...
-      CFLAGS => $Config{ccflags} . ' ' . Alien::Libxml2->cflags,
-      LIBS   => Alien::Libxml2->libs,
+      CONFIGURE_REQUIRES => {
+        'Alien::Libxml2' => '0',
+      },
+      CCFLAGS => Alien::Libxml2->cflags . " $Config{ccflags}",
+      LIBS    => [ Alien::Libxml2->libs ],
+      ...
+    );
+
+In your [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) script or module:
+
+    use FFI::Platypus;
+    use Alien::Libxml2;
+    
+    my $ffi = FFI::Platypus->new(
+      lib => [ Alien::Libxml2->dynamic_libs ],
     );
 
 # DESCRIPTION
