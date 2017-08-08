@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.02      2017-08-08 15:17:54 -0400
   - Require Alien::Build 0.73 for bug fixes
     related to parallel builds
 
