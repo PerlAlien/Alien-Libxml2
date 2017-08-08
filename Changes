@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Require Alien::Build 0.73 for bug fixes
+    related to parallel builds
 
 0.01      2017-03-30 18:05:22 -0400
   - initial version
