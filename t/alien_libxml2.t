@@ -1,4 +1,4 @@
-use Test2::Bundle::Extended;
+use Test2::V0 -no_srand => 1;
 use Test::Alien;
 use Alien::Libxml2;
 
@@ -26,7 +26,7 @@ mytest()
   INIT:
     xmlDoc *doc = NULL;
     xmlNode *root_element = NULL;
-    const char *filename = "t/basic.xml";
+    const char *filename = "corpus/basic.xml";
   CODE:
     doc = xmlReadFile(filename, NULL, 0);
     if(doc == NULL)
