@@ -5,6 +5,8 @@ plugin 'PkgConfig::MakeStatic' => ();
 
 share {
 
+  meta->prop->{out_of_source} = 1;
+
   plugin Download => (
     url     => 'ftp://xmlsoft.org/libxml2/',
     version => qr/^libxml2-sources-([\d\.]+)\.tar\.gz$/,
