@@ -1,6 +1,29 @@
 use alienfile;
 
+my $test_program = <<'EOF';
+#include <stdio.h>
+#include <libxml/xmlversion.h>
+
+int
+main(int argc, char *argv[])
+{
+  printf("xml version = '%s'\n", LIBXML_DOTTED_VERSION);
+}
+EOF
+
+my @try_flags = (
+  { cflags => '', libs => '-lxml2' },
+  { cflags => '-I/usr/include/libxml2', libs => '-lxml2' },
+  { cflags => '-I/usr/local/include/libxml2', libs => '-lxml2' },
+);
+
 plugin 'PkgConfig' => 'libxml-2.0';
+plugin 'Probe::CBuilder' => (
+  cflags  => $_->{cflags},
+  libs    => $_->{libs},
+  program => $test_program,
+  version => qr{xml version = '(.*?)'},
+) for @try_flags;
 plugin 'PkgConfig::MakeStatic' => ();
 
 share {

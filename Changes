@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Look for libxml2 in some standard places.
+    OS X, for example provides a libxml2, but (unhelpfully) does not
+    provide the .pc file to go along with it.
 
 0.02      2017-08-08 15:17:54 -0400
   - Require Alien::Build 0.73 for bug fixes
