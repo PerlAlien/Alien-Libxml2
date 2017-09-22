@@ -12,19 +12,20 @@ main(int argc, char *argv[])
 EOF
 
 my @try_flags = (
-  { cflags => '', libs => '-lxml2' },
-  { cflags => '-I/usr/include/libxml2', libs => '-lxml2' },
+  { cflags => '',                             libs => '-lxml2' },
+  { cflags => '-I/usr/include/libxml2',       libs => '-lxml2' },
   { cflags => '-I/usr/local/include/libxml2', libs => '-lxml2' },
 );
 
 plugin 'PkgConfig' => 'libxml-2.0';
 
-# TODO: does not work ?
-#probe [
-#  ['xml2-config', '--version' => \'%{.runtime.version}'],
-#  ['xml2-config', '--cflags'  => \'%{.runtime.cflags}'],
-#  ['xml2-config', '--libs'    => \'%{.runtime.libs}'],
-#];
+configure { requires 'Alien::Build' => '1.18' };
+
+probe [
+  ['xml2-config', '--version' => \'%{.install.my_version}'],
+  ['xml2-config', '--cflags'  => \'%{.install.my_cflags}'],
+  ['xml2-config', '--libs'    => \'%{.install.my_libs}'],
+];
 
 plugin 'Probe::CBuilder' => (
   cflags  => $_->{cflags},
@@ -77,11 +78,23 @@ share {
   plugin 'Build::Autoconf' => ();
 
   build [
-    '%{configure} --prefix=%{alien.install.autoconf_prefix} --without-python --disable-shared --enable-static',
+    '%{configure} --prefix=%{.install.autoconf_prefix} --without-python --disable-shared --enable-static',
     '%{make}',
     '%{make} install',
   ];
   
   plugin 'PkgConfig::MakeStatic' => ();
+
+};
+
+sys {
+
+  gather sub {
+    my($build) = @_;
+    if($build->install_prop->{my_libs})
+    {
+      $build->runtime_prop->{$_} = $build->install_prop->{"my_$_"} for qw( version cflags libs );
+    }
+  };
 
 };
