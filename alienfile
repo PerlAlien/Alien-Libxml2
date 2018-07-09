@@ -38,31 +38,24 @@ plugin 'PkgConfig::MakeStatic' => ();
 # TODO: refuse these versions for system install too
 #       (missing feature from AB core)
 plugin 'Prefer::BadVersion' => [
-  '2.4.22.0',
-  '2.4.25.0', # broken XPath
-  '2.4.28.0', # unsupported, may work fine with earlier XML::LibXML versions
-  '2.4.29.0', # broken
-  '2.4.30.0', # broken
-  '2.5.0.0', # unsupported
-  '2.5.1.0', # all pre 2.5.4 version have broken attr output
-  '2.5.5.0', # tests pass, but known as broken
-  '2.5.11.0', # will partially work
-  '2.6.0.0', # unsupported
-  '2.6.4.0', # schema error
-  '2.6.5.0', # broken xincludes
-  '2.6.15.0',
-  '2.6.16.1', # first version to pass all tests
-  '2.6.18.1', # up to 2.6.18 all ok
-  '2.6.19.0', # broken c14n
-  '2.6.20.0', # broken schemas
-  '2.6.24.1', # all tests pass
-  '2.6.25.0', # broken XPath
-  '2.6.32.1', # tested, works ok
-  '2.7.1.0', # broken release, broken utf-16
-  '2.7.6.1', # tested, ok
-  '2.7.8.1', # tested, ok
-  '2.9.3.1', # schema regression
-  '2.9.4.0', # schema regression
+  '2.4.22',
+  '2.4.25',  # broken XPath
+  '2.4.28',  # unsupported, may work fine with earlier XML::LibXML versions
+  '2.4.29',  # broken
+  '2.4.30',  # broken
+  '2.5.0',   # unsupported
+  '2.5.1',   # all pre 2.5.4 version have broken attr output
+  '2.5.5',   # tests pass, but known as broken
+  '2.5.11',  # will partially work
+  '2.6.0',   # unsupported
+  '2.6.4',   # schema error
+  '2.6.5',   # broken xincludes
+  '2.6.15',
+  '2.6.19',  # broken c14n
+  '2.6.20',  # broken schemas
+  '2.6.25',  # broken XPath
+  '2.7.1',   # broken release, broken utf-16
+  '2.9.4',   # schema regression
 ];
 
 share {
