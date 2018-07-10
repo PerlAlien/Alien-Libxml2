@@ -3,10 +3,19 @@ use alienfile;
 my $test_program = <<'EOF';
 #include <stdio.h>
 #include <libxml/xmlversion.h>
+#include <libxml/parser.h>
+#include <libxml/tree.h>
 
 int
 main(int argc, char *argv[])
 {
+  xmlDoc *doc = NULL;
+  /*
+   * xmlRead should fail, but having this call ensures
+   * that the we have access to the symbols in -lxml2
+   * (LIBXML_DOTTED_VERSION below is in the header file)
+   */
+  doc = xmlRead("foo.xml", NULL, 0);
   printf("xml version = '%s'\n", LIBXML_DOTTED_VERSION);
 }
 EOF
