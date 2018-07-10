@@ -76,8 +76,13 @@ meta->around_hook(
       # the second is from this alienfile.  Either could find a system libxml.
       # TODO: the capability to do this should exist in-core for Alien-Build.
       my $version = $build->install_prop->{plugin_prfobe_cbuilder_gather}->{version} ||
-                    $build->install_prop->{my_version} ||
-                    die 'TODO: pkg-config plugins do not set version :/';
+                    $build->install_prop->{my_version};
+
+      unless(defined $version)
+      {
+        print STDERR "pkg-config plugins do not set version :/\n";
+        return 'share';
+      }
 
       if($bad_versions{$version})
       {
