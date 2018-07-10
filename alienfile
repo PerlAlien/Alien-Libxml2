@@ -15,7 +15,7 @@ main(int argc, char *argv[])
    * that the we have access to the symbols in -lxml2
    * (LIBXML_DOTTED_VERSION below is in the header file)
    */
-  doc = xmlRead("foo.xml", NULL, 0);
+  doc = xmlReadFile("foo.xml", NULL, 0);
   printf("xml version = '%s'\n", LIBXML_DOTTED_VERSION);
 }
 EOF
