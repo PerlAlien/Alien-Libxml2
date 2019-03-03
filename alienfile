@@ -1,5 +1,7 @@
 use alienfile;
 
+configure { requires 'Alien::Build' => '1.60' };
+
 my $test_program = <<'EOF';
 #include <stdio.h>
 #include <libxml/xmlversion.h>
@@ -27,8 +29,6 @@ my @try_flags = (
 );
 
 plugin 'PkgConfig' => 'libxml-2.0';
-
-configure { requires 'Alien::Build' => '1.18' };
 
 probe [
   ['xml2-config', '--version' => \'%{.install.my_version}'],
