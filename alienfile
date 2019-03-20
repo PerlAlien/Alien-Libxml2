@@ -115,7 +115,9 @@ plugin 'Prefer::BadVersion' => [ keys %bad_versions ];
 
 share {
 
-  meta->prop->{out_of_source} = 1;
+  # out of source build is borked on Windows, so we turn it
+  # off there.  Turn it on elsewhere as it saves a copy.
+  meta->prop->{out_of_source} = $^O eq 'MSWin32' ? 0 : 1;
 
   plugin Download => (
     url     => 'ftp://xmlsoft.org/libxml2/',
