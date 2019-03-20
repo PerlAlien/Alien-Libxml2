@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.06      2019-03-19 22:54:55 -0400
+  - Fixes for Windows (gh#2, gh#3)
+
 0.05      2019-03-03 14:36:02 -0500
   - Use http instead of ftp to fetch libxml2 sources.
 
