@@ -1,4 +1,4 @@
-# Alien::Libxml2 [![Build Status](https://secure.travis-ci.org/plicease/Alien-Libxml2.png)](http://travis-ci.org/plicease/Alien-Libxml2)
+# Alien::Libxml2 [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Libxml2.png)](http://travis-ci.org/Perl5-Alien/Alien-Libxml2)
 
 Install the C libxml2 library on your system
 
