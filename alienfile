@@ -83,7 +83,7 @@ meta->around_hook(
       {
         print STDERR "Unfortunately, Alien::Libxml2 requires the version from the system libxml2 in\n",
                      "order to determine if it is acceptible for use, but Alien::Build prior to 1.61\n",
-                     "did not provide this information in the prob step.  Alien::Libxml2 can still\n",
+                     "did not provide this information in the probe step.  Alien::Libxml2 can still\n",
                      "find the system libxml2 on systems with xml2-config in the PATH, or if libxml2\n",
                      "is available from one of the commonly known locations.  If you want to detect\n",
                      "the system libxml2 with a .pc file via pkg-config, then please upgrade\n",
