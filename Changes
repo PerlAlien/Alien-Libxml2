@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.09      2019-05-14 06:57:21 -0600
+  - Production release identical to 0.08_01.
+
 0.08_01   2019-05-13 22:10:45 -0600
   - Fix bug in xml2-config logic
 
