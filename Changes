@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.08_01   2019-05-13 22:10:45 -0600
   - Fix bug in xml2-config logic
 
 0.07      2019-03-27 11:37:47 -0400
