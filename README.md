@@ -50,7 +50,7 @@ In your [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) script or module
 
 This module provides libxml2 for other modules to use.  There was an 
 already existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it uses the older 
-[Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not bee actively maintained for a 
+[Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not been actively maintained for a 
 while.
 
 # SEE ALSO
@@ -61,7 +61,11 @@ while.
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Author: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Shlomi Fish (shlomif)
 
 # COPYRIGHT AND LICENSE
 
