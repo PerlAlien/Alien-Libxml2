@@ -10,9 +10,9 @@ use base qw( Alien::Base );
 
 =head1 DESCRIPTION
 
-This module provides libxml2 for other modules to use.  There was an 
-already existing L<Alien::LibXML>, but it uses the older 
-L<Alien::Build::ModuleBuild> and has not been actively maintained for a 
+This module provides libxml2 for other modules to use.  There was an
+already existing L<Alien::LibXML>, but it uses the older
+L<Alien::Build::ModuleBuild> and has not been actively maintained for a
 while.
 
 =head1 SEE ALSO
