@@ -53,6 +53,19 @@ already existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it
 [Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not been actively maintained for a
 while.
 
+# CAVEATS
+
+`libxml2` has some optional prereqs, including `zlib` and `iconv`.
+For a `share` install you will want to make sure that these are installed
+prior to installing [Alien::Libxml2](https://metacpan.org/pod/Alien::Libxml2) if you want to make use of features
+relying on them.
+
+For a system install, you want to make sure the development packages for
+`libxml2`, `zlib` and `iconv` are installed if `libxml2` has been
+configured to use them, otherwise [XML::LibXML](https://metacpan.org/pod/XML::LibXML) will not install as
+expected.  If the tests for this module fail with a missing `iconv.h`
+or `zlib.h`, then this is likely the reason.
+
 # SEE ALSO
 
 - [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML)
