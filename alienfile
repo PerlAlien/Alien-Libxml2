@@ -150,7 +150,7 @@ share {
       my($build) = @_;
       my $prefix = $build->runtime_prop->{prefix};
       $build->runtime_prop->{cflags} = "-I$prefix/include/libxml2";
-      $build->runtime_prop->{libs}   = "-LIBPATH:$prefix/lib libxml2_a.lib";
+      $build->runtime_prop->{libs}   = "-L$prefix/lib libxml2_a.lib";
     };
   }
   else
