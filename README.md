@@ -1,4 +1,4 @@
-# Alien::Libxml2 [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Libxml2.png)](http://travis-ci.org/Perl5-Alien/Alien-Libxml2)
+# Alien::Libxml2 [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Libxml2.png)](http://travis-ci.org/Perl5-Alien/Alien-Libxml2) ![macos-share](https://github.com/Perl5-Alien/Alien-Libxml2/workflows/macos-share/badge.svg) ![macos-system](https://github.com/Perl5-Alien/Alien-Libxml2/workflows/macos-system/badge.svg) ![windows-share](https://github.com/Perl5-Alien/Alien-Libxml2/workflows/windows-share/badge.svg) ![windows-system](https://github.com/Perl5-Alien/Alien-Libxml2/workflows/windows-system/badge.svg)
 
 Install the C libxml2 library on your system
 
