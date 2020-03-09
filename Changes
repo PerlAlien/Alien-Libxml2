@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Support for Visual C++ Perl + Vcpkg system install (gh#17)
 
 0.12      2019-12-13 17:35:02 -0700
   - Support for Visual C++ Perl (gh#14)
