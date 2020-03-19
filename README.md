@@ -4,41 +4,38 @@ Install the C libxml2 library on your system
 
 # SYNOPSIS
 
+In your Makefile.PL:
+
+```perl
+use ExtUtils::MakeMaker;
+use Alien::Base::Wrapper ();
+
+WriteMakefile(
+  Alien::Base::Wrapper->new('Alien::Libxml2')->mm_args2(
+    # MakeMaker args
+    NAME => 'Kafka::Librd',
+    ...
+  ),
+);
+```
+
 In your Build.PL:
 
 ```perl
 use Module::Build;
-use Alien::Libxml2;
+use Alien::Base::Wrapper qw( Alien::Libxml2 !export );
+
 my $builder = Module::Build->new(
   ...
   configure_requires => {
     'Alien::Libxml2' => '0',
     ...
   },
-  extra_compiler_flags => Alien::Libxml2->cflags,
-  extra_linker_flags   => Alien::Libxml2->libs,
+  Alien::Base::Wrapper->mb_args,
   ...
 );
 
 $build->create_build_script;
-```
-
-In your Makefile.PL:
-
-```perl
-use ExtUtils::MakeMaker;
-use Config;
-use Alien::Libxml2;
-
-WriteMakefile(
-  ...
-  CONFIGURE_REQUIRES => {
-    'Alien::Libxml2' => '0',
-  },
-  CCFLAGS => Alien::Libxml2->cflags . " $Config{ccflags}",
-  LIBS    => [ Alien::Libxml2->libs ],
-  ...
-);
 ```
 
 In your [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) script or module:
@@ -54,12 +51,13 @@ my $ffi = FFI::Platypus->new(
 
 # DESCRIPTION
 
-This module provides libxml2 for other modules to use.  There was an
-already existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it uses the older
-[Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and has not been actively maintained for a
-while.
+This module provides `libxml2` for other modules to use.
 
 # CAVEATS
+
+There was an older existing [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML), but it uses the older
+[Alien::Build::ModuleBuild](https://metacpan.org/pod/Alien::Build::ModuleBuild) and the author prefers this version which
+is based on the more robust [alienfile](https://metacpan.org/pod/alienfile) system.
 
 `libxml2` has some optional prereqs, including `zlib` and `iconv`.
 For a `share` install you will want to make sure that these are installed
@@ -76,7 +74,11 @@ or `zlib.h`, then this is likely the reason.
 
 - [Alien::LibXML](https://metacpan.org/pod/Alien::LibXML)
 
-    Unmaintained Alien for the same library.
+    Older Alien for the same library.
+
+- [XML::LibXML](https://metacpan.org/pod/XML::LibXML)
+
+    Perl interface to `libxml2`, which uses this [Alien](https://metacpan.org/pod/Alien)
 
 # AUTHOR
 
