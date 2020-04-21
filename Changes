@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Fix mixed probe on macOS (gh#20)
 
 0.15      2020-03-18 23:16:56 -0600
   - Updated documentation to use Alien::Base::Wrapper
