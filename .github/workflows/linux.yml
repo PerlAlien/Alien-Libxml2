@@ -1,0 +1,115 @@
+name: linux
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  perl:
+
+    runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          cip:
+            - tag: static
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.33
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.33
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.32
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.32
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.30
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.30
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.28
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.28
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.26
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.26
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.24
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.24
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.22
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.22
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.20
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.20
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.18
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.18
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.16
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.16
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.14
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.14
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.12
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.12
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.10
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.10
+            - env: ALIEN_INSTALL_TYPE=share
+              tag: 5.8
+            - env: ALIEN_INSTALL_TYPE=system
+              tag: 5.8
+    env:
+      CIP_ENV: ${{ matrix.cip.env }}
+      CIP_TAG: ${{ matrix.cip.tag }}
+
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Bootstrap CIP
+        run: |
+          curl -L https://raw.githubusercontent.com/uperl/cip/main/bin/github-bootstrap | bash
+
+      - name: Cache-Key
+        id: cache-key
+        run: |
+          echo -n '::set-output name=key::'
+          cip cache-key
+
+      - name: Cache CPAN modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.cip
+          key: ${{ runner.os }}-build-${{ steps.cache-key.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ steps.cache-key.outputs.key }}
+
+      - name: Start-Container
+        run: |
+          cip start
+
+      - name: Diagnostics
+        run: |
+          cip diag
+
+      - name: Install-Dependencies
+        run: |
+          cip install
+
+      - name: Build + Test
+        run: |
+          cip script
