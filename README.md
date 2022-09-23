@@ -1,4 +1,4 @@
-# Alien::Libxml2 ![macos-share](https://github.com/PerlAlien/Alien-Libxml2/workflows/macos-share/badge.svg) ![macos-system](https://github.com/PerlAlien/Alien-Libxml2/workflows/macos-system/badge.svg) ![windows-share](https://github.com/PerlAlien/Alien-Libxml2/workflows/windows-share/badge.svg) ![windows-system](https://github.com/PerlAlien/Alien-Libxml2/workflows/windows-system/badge.svg)
+# Alien::Libxml2 ![linux](https://github.com/PerlAlien/Alien-Libxml2/workflows/linux/badge.svg) ![macos-share](https://github.com/PerlAlien/Alien-Libxml2/workflows/macos-share/badge.svg) ![macos-system](https://github.com/PerlAlien/Alien-Libxml2/workflows/macos-system/badge.svg) ![windows-share](https://github.com/PerlAlien/Alien-Libxml2/workflows/windows-share/badge.svg) ![windows-system](https://github.com/PerlAlien/Alien-Libxml2/workflows/windows-system/badge.svg)
 
 Install the C libxml2 library on your system
 
@@ -90,7 +90,7 @@ Shlomi Fish (shlomif)
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Graham Ollis.
+This software is copyright (c) 2013-2022 by Graham Ollis.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
