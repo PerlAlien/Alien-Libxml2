@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
 
 0.19      2022-09-25 08:54:48 -0600
+  - Production release identical to 0.18_01
 
 0.18_01   2022-09-23 21:05:53 -0600
   - Use Download::GitLab plugin to fetch recent version of
