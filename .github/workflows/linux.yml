@@ -19,9 +19,17 @@ jobs:
         cip:
           - tag: "static"
           - env: ALIEN_INSTALL_TYPE=share
-            tag: "5.37"
+            tag: "5.41"
           - env: ALIEN_INSTALL_TYPE=system
-            tag: "5.37"
+            tag: "5.41"
+          - env: ALIEN_INSTALL_TYPE=share
+            tag: "5.40"
+          - env: ALIEN_INSTALL_TYPE=system
+            tag: "5.40"
+          - env: ALIEN_INSTALL_TYPE=share
+            tag: "5.38"
+          - env: ALIEN_INSTALL_TYPE=system
+            tag: "5.38"
           - env: ALIEN_INSTALL_TYPE=share
             tag: "5.36"
           - env: ALIEN_INSTALL_TYPE=system

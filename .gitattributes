@@ -2,3 +2,4 @@
 *.t linguist-language=Perl
 alienfile linguist-language=Perl
 *.h linguist-language=C
+alienfile linguist-language=Perl
