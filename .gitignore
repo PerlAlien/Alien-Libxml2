@@ -1,3 +1,5 @@
 /Alien-Libxml2-*
 /.build
 /a.out
+*.old
+*.orig
