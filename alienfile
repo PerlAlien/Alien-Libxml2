@@ -65,7 +65,8 @@ my %bad_versions = map { $_ => 1 } (
   #  The next set have reported CVEs
   (map {'2.11.' . $_} (0 .. 9)),
   (map {'2.12.' . $_} (0 .. 9)),
-  (map {'2.13.' . $_} (0 .. 6)),
+  (map {'2.13.' . $_} (0 .. 7)),
+  (map {'2.14.' . $_} (0 .. 1)),
 );
 
 meta->around_hook(
